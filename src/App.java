@@ -6,8 +6,7 @@ import Produto.TV;
 import Repositorio.RepositorioProduto;
 
 import static Interface.InterfaceRepositorioProduto.limparBufferTeclado;
-import static Repositorio.RepositorioProduto.celulares;
-import static Repositorio.RepositorioProduto.televisores;
+import static Repositorio.RepositorioProduto.*;
 
 
 public class App {
@@ -15,7 +14,7 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         int opcao;
         do{
-            System.out.println("1.Cadastrar produto\n2.Consultar produto\n3.Remover produto\n0.Sair do sistema");
+            System.out.println("1.Cadastrar produto\n2.Consultar produto\n3.Remover produto\n4.Atualizar produto\n0.Sair do sistema");
             opcao = scanner.nextInt();
 
             switch(opcao){
@@ -64,7 +63,34 @@ public class App {
                 break;
 
                 case 3:
-                RepositorioProduto.removerProdutos();
+                    Scanner entradaRemover = new Scanner((System.in));
+                    System.out.println("1 - Remover TV\n2 - Remover Celular\n");
+                    int escolhaRemover = entradaRemover.nextInt();
+                    TV tvRemover;
+                    Celular celularRemover;
+                    if (escolhaRemover == 1){
+                        for (int i = 0; i < televisores.size(); i++) {
+                            tvRemover = televisores.get(i);
+                            System.out.println(i + " - Tamanho da tela:" + tvRemover.getTamanhoTela() + "\nFabricante:" + tvRemover.getFabricante() + "\nTipo de controle: " + tvRemover.getTipoControle() + "\n---------------------------------");
+                        }
+                        System.out.print("Digite o número referente a TV que você deseja remover: ");
+                        int remover = entradaRemover.nextInt();
+                        removerTV(remover);
+                        System.out.println("TV removida com sucesso");
+                    }
+                    else if (escolhaRemover == 2){
+                        for (int i= 0; i <celulares.size(); i++){
+                            celularRemover = celulares.get(i);
+                            System.out.println(i + " - Tamanho da tela:" + celularRemover.getTamanhoTela() + "\nFabricante:" + celularRemover.getFabricante() + "\nCapacidade da bateria: " + celularRemover.getCapacidadeBateria() + "\n---------------------------------");
+                        }
+                        System.out.println("Digite o número referente a TV que você deseja remover: ");
+                        int remover = entradaRemover.nextInt();
+                        removerCelular(remover);
+                        System.out.println("Celular removido com sucesso");
+                    }
+
+                break;
+                case 4:
                 break;
 
                 case 0:
