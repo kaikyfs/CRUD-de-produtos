@@ -4,8 +4,6 @@ import Interface.InterfaceRepositorioProduto;
 import Produto.Celular;
 import Produto.TV;
 import Repositorio.RepositorioProduto;
-
-import static Interface.InterfaceRepositorioProduto.limparBufferTeclado;
 import static Repositorio.RepositorioProduto.*;
 
 
@@ -14,7 +12,7 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         int opcao;
         do{
-            System.out.println("1.Cadastrar produto\n2.Consultar produto\n3.Remover produto\n4.Atualizar produto\n0.Sair do sistema");
+            System.out.println("1.Cadastrar produto\n2.Consultar produto\n3.Remover produto\n0.Sair do sistema");
             opcao = scanner.nextInt();
 
             switch(opcao){
@@ -25,10 +23,10 @@ public class App {
                     if (escolha==1) {
                         System.out.print("Digite o tamanho da tela:");
                         int tamanhoTela = entrada.nextInt();
-                        limparBufferTeclado(entrada);
-                        System.out.print("\nDigite o fabricante:");
+                        entrada.nextLine();
+                        System.out.print("Digite o fabricante:");
                         String fabricante = entrada.nextLine();
-                        System.out.print("\nDigite o tipo de controle:");
+                        System.out.print("Digite o tipo de controle:");
                         String tipoControle = entrada.nextLine();
                         TV novaTV = new TV(tamanhoTela, fabricante, tipoControle);
                         RepositorioProduto.cadastrarTV(novaTV);
@@ -36,8 +34,8 @@ public class App {
                     }else if(escolha==2) {
                         System.out.print("Digite o tamanho da tela:");
                         int tamanhoTela = entrada.nextInt();
-                        limparBufferTeclado(entrada);
-                        System.out.print("\nDigite o fabricante:");
+                        entrada.nextLine();
+                        System.out.print("Digite o fabricante:");
                         String fabricante = entrada.nextLine();
                         System.out.print("\nDigite a capacidade da bateria:");
                         int capacidadeBateria = entrada.nextInt();
@@ -90,9 +88,6 @@ public class App {
                     }
 
                 break;
-                case 4:
-                break;
-
                 case 0:
                 System.out.println("Obrigado por usar nosso sistema, até mais!");
 

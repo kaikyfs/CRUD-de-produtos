@@ -11,6 +11,4 @@ public interface InterfaceRepositorioProduto{
     public static void cadastrarCelular(Celular novoCelular){};
 
     public static void removerProdutos(){};
-
-    public static void limparBufferTeclado(Scanner entrada){};
 }
